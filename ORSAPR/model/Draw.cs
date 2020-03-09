@@ -83,13 +83,13 @@ namespace ORSAPR.model
         {
             SelectLayer();
             SelectSketch();
-            RemoveAllocating();
             DrawRectangle(box.Width, box.Length);
             ExtrudeFigure(box.Height);
             SelectLayerByRay(box.Height);
             SelectSketch();
             DrawRectangle(box.InnerWidth, box.InnerLength);
             CutFigure(box.InnerHeight, false);
+            RemoveAllocating();
         }
         /// <summary>
         /// Строит крышку шкатулки в SolidWorks 2020
@@ -107,6 +107,7 @@ namespace ORSAPR.model
             SelectSketch();
             DrawRectangle(cap.Width*2 - boxInnerWidth, boxInnerLength, cap.Width);
             ExtrudeFigure(cap.Height + Cap.ClosingHeight);
+            RemoveAllocating();
         }
         /// <summary>
         /// Выбор плоскости
@@ -169,7 +170,7 @@ namespace ORSAPR.model
         /// </summary>
         private void IsometricView()
         {
-            model.ShowNamedView2(NameView, 7);
+            model.ShowNamedView2(NameView, -1);
             model.ViewZoomtofit2();
         }
     }

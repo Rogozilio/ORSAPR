@@ -63,6 +63,7 @@
     <Compile Include="model\Exceptions\ValueOutOfRangeException.cs" />
     <Compile Include="model\FormValidator.cs" />
     <Compile Include="model\NumberExtensions.cs" />
+    <Compile Include="model\SizeRange.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -77,6 +78,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
