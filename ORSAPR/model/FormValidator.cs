@@ -20,11 +20,11 @@ namespace ORSAPR.model
 
         private SizeRange _rangeHeight = new SizeRange { Min = 50, Max = 150 };
 
-        private SizeRange _rangeInnerWidth = new SizeRange { Min = 50, Max = 190 };
+        private SizeRange _rangeInnerWidth = new SizeRange { Min = 50, Max = 200 };
 
-        private SizeRange _rangeInnerLength = new SizeRange { Min = 50, Max = 190 };
+        private SizeRange _rangeInnerLength = new SizeRange { Min = 50, Max = 200 };
 
-        private SizeRange _rangeInnerHeight = new SizeRange { Min = 30, Max = 140 };
+        private SizeRange _rangeInnerHeight = new SizeRange { Min = 30, Max = 150 };
 
         private SizeRange _rangeCapWidth = new SizeRange { Min = 100, Max = 230 };
 
@@ -37,11 +37,7 @@ namespace ORSAPR.model
         /// <param name="casket">Объект шкатулки</param>
         public void CheckWritedValues(Casket casket)
         {
-            _rangeInnerWidth.Max = (casket.Box.Width > _rangeInnerWidth.Max) ? _rangeWidth.Max : casket.Box.Width;
-            _rangeInnerLength.Max = ((casket.Box.Length > _rangeInnerLength.Max) ? _rangeLength.Max : casket.Box.Length);
-            _rangeInnerHeight.Max = ((casket.Box.Height > _rangeInnerHeight.Max) ? _rangeHeight.Max : casket.Box.Height);
-            _rangeCapWidth.Min = ((casket.Box.InnerWidth > _rangeCapWidth.Min) ? casket.Box.InnerWidth : _rangeCapWidth.Min);
-            _rangeCapLength.Min = ((casket.Box.InnerLength > _rangeCapLength.Min) ? casket.Box.InnerLength : _rangeCapLength.Min);
+            GetDependValues(casket);
 
             CheckRangeValue(casket.Box.Width, _rangeWidth.Min, _rangeWidth.Max, "Ширина основания");
             CheckRangeValue(casket.Box.Length, _rangeLength.Min, _rangeLength.Max, "Длина основания");
@@ -66,6 +62,18 @@ namespace ORSAPR.model
         {
             if (value < min || value > max)
                 throw new ValueOutOfRangeException(nameException,min,max);
+        }
+        /// <summary>
+        /// Получение зависимых значений
+        /// </summary>
+        /// <param name="casket">Объект шкатулки</param>
+        private void GetDependValues(Casket casket)
+        {
+            _rangeInnerWidth.Max = casket.Box.Width - 5;
+            _rangeInnerLength.Max = casket.Box.Length - 5;
+            _rangeInnerHeight.Max = casket.Box.Height - 5;
+            _rangeCapWidth.Min = casket.Box.InnerWidth + 1;
+            _rangeCapLength.Min = casket.Box.InnerLength + 1;
         }
     }
 }

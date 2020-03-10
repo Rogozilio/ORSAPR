@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ORSAPR.model
+﻿namespace ORSAPR.model
 {
     /// <summary>
     /// Класс описывает крышку шкатулки
@@ -19,6 +13,6 @@ namespace ORSAPR.model
         /// <summary>
         /// Высота закрывающего механизма крышки
         /// </summary>
-        public const int ClosingHeight = 10;
+        public int ClosingHeight{get => 10;}
     }
 }

@@ -22,6 +22,8 @@ namespace ORSAPR.model
         private const string NameView = "Изометрия";
 
         private const string SelectionAxisType = "PLANE";
+
+        private const int MilliBetweenBoxAndCap = 5;
         /// <summary>
         /// Строит модель в SolidWorks 2020
         /// </summary>
@@ -101,12 +103,14 @@ namespace ORSAPR.model
         {
             SelectLayer();
             SelectSketch();
-            DrawRectangle(cap.Width, cap.Length, cap.Width);
+            DrawRectangle(cap.Width + MilliBetweenBoxAndCap * 2, cap.Length,
+                cap.Width + MilliBetweenBoxAndCap);
             ExtrudeFigure(cap.Height);
             SelectLayer();
             SelectSketch();
-            DrawRectangle(cap.Width*2 - boxInnerWidth, boxInnerLength, cap.Width);
-            ExtrudeFigure(cap.Height + Cap.ClosingHeight);
+            DrawRectangle((cap.Width+ MilliBetweenBoxAndCap)*2 - boxInnerWidth,
+                boxInnerLength, cap.Width + MilliBetweenBoxAndCap);
+            ExtrudeFigure(cap.Height + cap.ClosingHeight);
             RemoveAllocating();
         }
         /// <summary>
@@ -144,7 +148,8 @@ namespace ORSAPR.model
         /// </summary>
         private void DrawRectangle(double x, double y, double centerX = 0)
         {
-            model.SketchManager.CreateCenterRectangle(centerX.ToMilli(), 0, 0, x.ToMilli()/2, y.ToMilli()/2, 0);
+            model.SketchManager.CreateCenterRectangle(centerX.ToMilli(), 0, 0, 
+                x.ToMilli()/2, y.ToMilli()/2, 0);
         }
         /// <summary>
         /// Вытягивание эскиза
@@ -163,7 +168,7 @@ namespace ORSAPR.model
         private void CutFigure(double height, bool isUp = true)
         {
             model.FeatureManager.FeatureCut4(true, false, isUp, 0, 0, height.ToMilli(), 0.01, false, false, false, false, 
-                1.74532925199433E-02, 1.74532925199433E-02, false, false, false, false, false, true, true, true, true, false, 0, 0, false, false); //вырезание
+                1.74532925199433E-02, 1.74532925199433E-02, false, false, false, false, false, true, true, true, true, false, 0, 0, false, false);
         }
         /// <summary>
         /// Переключение камеры на вид изометрии
