@@ -21,7 +21,7 @@ namespace ORSAPR.model
 
         private const string NameView = "Изометрия";
 
-        private const string SelectionAxisType = "PLANE";
+        private const string SelectionAxisType = "PLANE"; 
 
         private const int MilliBetweenBoxAndCap = 5;
         /// <summary>
