@@ -15,7 +15,6 @@ namespace ORSAPR.model
         {
             return number / (double)1000;
         }
-
         public static double ToMilli(this double number)
         {
             return number / 1000;

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using SolidWorks.Interop.sldworks;
 
 namespace ORSAPR.model
@@ -13,15 +8,15 @@ namespace ORSAPR.model
     /// </summary>
     class Draw
     {
-        SldWorks solidWork;
+        private SldWorks solidWork;
 
-        IModelDoc2 model;
+        private IModelDoc2 model;
 
         private const string TopAxisName = "Сверху";
 
         private const string NameView = "Изометрия";
 
-        private const string SelectionAxisType = "PLANE"; 
+        private const string SelectionAxisType = "PLANE";
 
         private const int MilliBetweenBoxAndCap = 5;
         /// <summary>

@@ -18,26 +18,25 @@ namespace ORSAPR
         public Main()
         {
             InitializeComponent();
-            NewKeypressAllTextBox(Controls);
-
+            NewKeyPressAllTextBox(Controls);
         }
 
-        Draw draw = new Draw();
+        private Draw _draw = new Draw();
 
-        FormValidator validator = new FormValidator();
+        private FormValidator _validator = new FormValidator();
 
         /// <summary>
         /// изменяет событие keyPress всем textBox
         /// </summary>
         /// <param name="ctrl">Коллекция элемента управления</param>
-        private void NewKeypressAllTextBox(Control.ControlCollection ctrl)
+        private void NewKeyPressAllTextBox(Control.ControlCollection ctrl)
         {
             foreach (Control control in ctrl)
             {
                 if (control.GetType() == typeof(TextBox))
                     control.KeyPress += KeyPressOnlyDigit;
                 if (control.GetType() == typeof(GroupBox))
-                    NewKeypressAllTextBox(control.Controls);
+                    NewKeyPressAllTextBox(control.Controls);
             }  
         }
         /// <summary>
@@ -58,12 +57,8 @@ namespace ORSAPR
             try
             {
                 Casket casker = CreateCasket();
-                validator.CheckWritedValues(casker);
-                draw.BuilModel(casker);
-            }
-            catch (ArgumentOutOfRangeException outOfRange)
-            {
-                MessageBox.Show(outOfRange.Message);
+                _validator.CheckWritedValues(casker);
+                _draw.BuilModel(casker);
             }
             catch (Exception ex)
             {

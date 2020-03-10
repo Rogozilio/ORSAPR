@@ -1,11 +1,4 @@
 ﻿using ORSAPR.model.Exceptions;
-using System;
-using ORSAPR.model;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ORSAPR.model
 {
@@ -14,7 +7,7 @@ namespace ORSAPR.model
     /// </summary>
     class FormValidator
     {
-        private SizeRange _rangeWidth = new SizeRange { Min = 100, Max = 200 };
+        private SizeRange _rangeWidth = new SizeRange { Min = 100, Max = 200 }; 
 
         private SizeRange _rangeLength = new SizeRange { Min = 100, Max = 200 };
 
@@ -52,16 +45,16 @@ namespace ORSAPR.model
             CheckRangeValue(casket.Cap.Height, _rangeCapHeight.Min, _rangeCapHeight.Max, "Высота крышки");
         }
         /// <summary>
-        /// Проверка value в диапазоне (min-max) 
+        /// Проверка value в диапазоне (min-max)
         /// </summary>
         /// <param name="value">Значение поля</param>
         /// <param name="min">Минимальная значение</param>
         /// <param name="max">Максимальное значение</param>
         /// <param name="textException">Текст при нарушении диапазона</param>
-        private void CheckRangeValue(int value, int min, int max, string nameException)
+        private void CheckRangeValue(int value, int min, int max, string nameValue)
         {
             if (value < min || value > max)
-                throw new ValueOutOfRangeException(nameException,min,max);
+                throw new ValueOutOfRangeException(nameValue,min,max);
         }
         /// <summary>
         /// Получение зависимых значений
