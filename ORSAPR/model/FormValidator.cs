@@ -7,7 +7,7 @@ namespace ORSAPR.model
     /// </summary>
     class FormValidator
     {
-        private SizeRange _rangeWidth = new SizeRange { Min = 100, Max = 200 }; 
+        private SizeRange _rangeWidth = new SizeRange { Min = 100, Max = 200 };
 
         private SizeRange _rangeLength = new SizeRange { Min = 100, Max = 200 };
 
