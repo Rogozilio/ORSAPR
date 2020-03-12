@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ORSAPR.model
+﻿namespace ORSAPR.model
 {
     public class SizeRange
     {

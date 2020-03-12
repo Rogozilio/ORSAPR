@@ -21,7 +21,7 @@ namespace ORSAPR
             NewKeyPressAllTextBox(Controls);
         }
 
-        private Draw _draw = new Draw();
+        private Builder _draw = new Builder();
 
         private FormValidator _validator = new FormValidator();
 
@@ -96,6 +96,20 @@ namespace ORSAPR
             {
                 throw new Exception("Заполните все поля");
             }
+        }
+
+        private void ButtonValueDefault_Click(object sender, EventArgs e)
+        {
+            ValueCasketDefault valueDefault = new ValueCasketDefault();
+            _textBoxWidth.Text = valueDefault.casket.Box.Width.ToString();
+            _textBoxLength.Text = valueDefault.casket.Box.Length.ToString();
+            _textBoxHeight.Text = valueDefault.casket.Box.Height.ToString();
+            _textBoxInsideWidth.Text = valueDefault.casket.Box.InnerWidth.ToString();
+            _textBoxInsideLength.Text = valueDefault.casket.Box.InnerLength.ToString();
+            _textBoxInsideHeight.Text = valueDefault.casket.Box.InnerHeight.ToString();
+            _textBoxCapWidth.Text = valueDefault.casket.Cap.Width.ToString();
+            _textBoxCapLength.Text = valueDefault.casket.Cap.Length.ToString();
+            _textBoxCapHeight.Text = valueDefault.casket.Cap.Height.ToString();
         }
     }
 }

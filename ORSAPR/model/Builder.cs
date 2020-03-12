@@ -6,7 +6,7 @@ namespace ORSAPR.model
     /// <summary>
     /// Класс для построения модели в SolidWorks 2020
     /// </summary>
-    class Draw
+    class Builder
     {
         private SldWorks solidWork;
 
@@ -43,7 +43,7 @@ namespace ORSAPR.model
             }
             catch
             {
-                throw new Exception("GUID SolidWork 2020 не найден");
+                throw new Exception("GUID SolidWorks 2020 не найден");
             }
         }
         /// <summary>
