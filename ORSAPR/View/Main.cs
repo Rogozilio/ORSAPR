@@ -11,7 +11,7 @@ using SolidWorks.Interop.sldworks;
 using ORSAPR.model;
 using System.Diagnostics;
 
-namespace ORSAPR
+namespace View
 {
     public partial class Main : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace ORSAPR
+﻿namespace View
 {
     partial class Main
     {
