@@ -1,6 +1,7 @@
-﻿using ORSAPR.model.Exceptions;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using ORSAPR.model.Exceptions;
 
 namespace ORSAPR.model
 {
@@ -28,38 +29,45 @@ namespace ORSAPR.model
         }
         public Casket(List<TextBox> textBox)
         {
-            foreach(var value in textBox)
+            try
             {
-                switch (value.TabIndex)
+                foreach(var value in textBox)
                 {
-                    case 1:
-                        Box.Width = int.Parse(value.Text);
-                        break;
-                    case 2:
-                        Box.Length = int.Parse(value.Text);
-                        break;
-                    case 3:
-                        Box.Height = int.Parse(value.Text);
-                        break;
-                    case 4:
-                        Box.InnerWidth = int.Parse(value.Text);
-                        break;
-                    case 5:
-                        Box.InnerLength = int.Parse(value.Text);
-                        break;
-                    case 6:
-                        Box.InnerHeight = int.Parse(value.Text);
-                        break;
-                    case 7:
-                        Cap.Width = int.Parse(value.Text);
-                        break;
-                    case 8:
-                        Cap.Length = int.Parse(value.Text);
-                        break;
-                    case 9:
-                        Cap.Height = int.Parse(value.Text);
-                        break;
+                    switch (value.TabIndex)
+                    {
+                        case 1:
+                            Box.Width = int.Parse(value.Text);
+                            break;
+                        case 2:
+                            Box.Length = int.Parse(value.Text);
+                            break;
+                        case 3:
+                            Box.Height = int.Parse(value.Text);
+                            break;
+                        case 4:
+                            Box.InnerWidth = int.Parse(value.Text);
+                            break;
+                        case 5:
+                            Box.InnerLength = int.Parse(value.Text);
+                            break;
+                        case 6:
+                            Box.InnerHeight = int.Parse(value.Text);
+                            break;
+                        case 7:
+                            Cap.Width = int.Parse(value.Text);
+                            break;
+                        case 8:
+                            Cap.Length = int.Parse(value.Text);
+                            break;
+                        case 9:
+                            Cap.Height = int.Parse(value.Text);
+                            break;
+                    }
                 }
+            }
+            catch
+            {
+                throw new Exception("Заполните все поля");
             }
             CheckWritedValues(this);
         }

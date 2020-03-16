@@ -67,39 +67,6 @@ namespace View
             }
         }
         /// <summary>
-        /// Присваивает значения объекту Casket из введенных данных
-        /// </summary>
-        private Casket CreateCasket()
-        {
-            try
-            {
-                Casket casket = new Casket(_listTextBox);
-                //Casket casket = new Casket
-                //{
-                //    Box = new Box
-                //    {
-                //        Width = int.Parse(_textBoxWidth.Text),
-                //        Length = int.Parse(_textBoxLength.Text),
-                //        Height = int.Parse(_textBoxHeight.Text),
-                //        InnerWidth = int.Parse(_textBoxInsideWidth.Text),
-                //        InnerLength = int.Parse(_textBoxInsideLength.Text),
-                //        InnerHeight = int.Parse(_textBoxInsideHeight.Text)
-                //    },
-                //    Cap = new Cap
-                //    {
-                //        Width = int.Parse(_textBoxCapWidth.Text),
-                //        Length = int.Parse(_textBoxCapLength.Text),
-                //        Height = int.Parse(_textBoxCapHeight.Text),
-                //    },
-                //};
-                return casket;
-            }
-            catch
-            {
-                throw new Exception("Заполните все поля");
-            }
-        }
-        /// <summary>
         /// Задает значение полей по умолчанию
         /// </summary>
         private void ButtonValueDefault_Click(object sender, EventArgs e)
