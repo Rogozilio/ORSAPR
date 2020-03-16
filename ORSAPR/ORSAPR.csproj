@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="model\Range.cs" />
     <Compile Include="View\Main.cs">
       <SubType>Form</SubType>
     </Compile>

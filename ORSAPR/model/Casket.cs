@@ -14,7 +14,7 @@ namespace ORSAPR.model
 
         public Cap Cap { get; } = new Cap();
 
-        public SizeRange Range = new SizeRange();
+        public Range Range = new Range();
 
         public Casket()
         {
