@@ -80,6 +80,8 @@
             this._textBoxWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._textBoxWidth.Location = new System.Drawing.Point(79, 24);
             this._textBoxWidth.Name = "_textBoxWidth";
+            this._textBoxWidth.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this._textBoxWidth.ShortcutsEnabled = false;
             this._textBoxWidth.Size = new System.Drawing.Size(100, 20);
             this._textBoxWidth.TabIndex = 1;
             // 
@@ -88,6 +90,7 @@
             this._textBoxLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._textBoxLength.Location = new System.Drawing.Point(79, 50);
             this._textBoxLength.Name = "_textBoxLength";
+            this._textBoxLength.ShortcutsEnabled = false;
             this._textBoxLength.Size = new System.Drawing.Size(100, 20);
             this._textBoxLength.TabIndex = 2;
             // 
@@ -96,6 +99,7 @@
             this._textBoxHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._textBoxHeight.Location = new System.Drawing.Point(79, 76);
             this._textBoxHeight.Name = "_textBoxHeight";
+            this._textBoxHeight.ShortcutsEnabled = false;
             this._textBoxHeight.Size = new System.Drawing.Size(100, 20);
             this._textBoxHeight.TabIndex = 3;
             // 
@@ -104,6 +108,7 @@
             this._textBoxInsideWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._textBoxInsideWidth.Location = new System.Drawing.Point(73, 22);
             this._textBoxInsideWidth.Name = "_textBoxInsideWidth";
+            this._textBoxInsideWidth.ShortcutsEnabled = false;
             this._textBoxInsideWidth.Size = new System.Drawing.Size(100, 20);
             this._textBoxInsideWidth.TabIndex = 4;
             // 
@@ -112,6 +117,7 @@
             this._textBoxInsideLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._textBoxInsideLength.Location = new System.Drawing.Point(73, 48);
             this._textBoxInsideLength.Name = "_textBoxInsideLength";
+            this._textBoxInsideLength.ShortcutsEnabled = false;
             this._textBoxInsideLength.Size = new System.Drawing.Size(100, 20);
             this._textBoxInsideLength.TabIndex = 5;
             // 
@@ -120,6 +126,7 @@
             this._textBoxInsideHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._textBoxInsideHeight.Location = new System.Drawing.Point(73, 74);
             this._textBoxInsideHeight.Name = "_textBoxInsideHeight";
+            this._textBoxInsideHeight.ShortcutsEnabled = false;
             this._textBoxInsideHeight.Size = new System.Drawing.Size(100, 20);
             this._textBoxInsideHeight.TabIndex = 6;
             // 
@@ -128,6 +135,7 @@
             this._textBoxCapWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._textBoxCapWidth.Location = new System.Drawing.Point(78, 25);
             this._textBoxCapWidth.Name = "_textBoxCapWidth";
+            this._textBoxCapWidth.ShortcutsEnabled = false;
             this._textBoxCapWidth.Size = new System.Drawing.Size(100, 20);
             this._textBoxCapWidth.TabIndex = 7;
             // 
@@ -136,6 +144,7 @@
             this._textBoxCapLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._textBoxCapLength.Location = new System.Drawing.Point(78, 51);
             this._textBoxCapLength.Name = "_textBoxCapLength";
+            this._textBoxCapLength.ShortcutsEnabled = false;
             this._textBoxCapLength.Size = new System.Drawing.Size(100, 20);
             this._textBoxCapLength.TabIndex = 8;
             // 
@@ -144,6 +153,7 @@
             this._textBoxCapHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this._textBoxCapHeight.Location = new System.Drawing.Point(78, 77);
             this._textBoxCapHeight.Name = "_textBoxCapHeight";
+            this._textBoxCapHeight.ShortcutsEnabled = false;
             this._textBoxCapHeight.Size = new System.Drawing.Size(100, 20);
             this._textBoxCapHeight.TabIndex = 9;
             // 
