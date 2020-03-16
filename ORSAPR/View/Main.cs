@@ -20,10 +20,9 @@ namespace View
             InitializeComponent();
             NewKeyPressAllTextBox(Controls);
         }
+        private List<TextBox> _listTextBox = new List<TextBox>();
 
         private Builder _draw = new Builder();
-
-        private FormValidator _validator = new FormValidator();
 
         /// <summary>
         /// изменяет событие keyPress всем textBox
@@ -34,7 +33,10 @@ namespace View
             foreach (Control control in ctrl)
             {
                 if (control.GetType() == typeof(TextBox))
+                {
                     control.KeyPress += KeyPressOnlyDigit;
+                    _listTextBox.Add((TextBox)control);
+                } 
                 if (control.GetType() == typeof(GroupBox))
                     NewKeyPressAllTextBox(control.Controls);
             }  
@@ -56,8 +58,7 @@ namespace View
         {
             try
             {
-                Casket casker = CreateCasket();
-                _validator.CheckWritedValues(casker);
+                Casket casker = new Casket(_listTextBox);
                 _draw.BuilModel(casker);
             }
             catch (Exception ex)
@@ -72,24 +73,25 @@ namespace View
         {
             try
             {
-                Casket casket = new Casket
-                            {
-                                Box = new Box
-                                {
-                                    Width = int.Parse(_textBoxWidth.Text),
-                                    Length = int.Parse(_textBoxLength.Text),
-                                    Height = int.Parse(_textBoxHeight.Text),
-                                    InnerWidth = int.Parse(_textBoxInsideWidth.Text),
-                                    InnerLength = int.Parse(_textBoxInsideLength.Text),
-                                    InnerHeight = int.Parse(_textBoxInsideHeight.Text)
-                                },
-                                Cap = new Cap
-                                {
-                                    Width = int.Parse(_textBoxCapWidth.Text),
-                                    Length = int.Parse(_textBoxCapLength.Text),
-                                    Height = int.Parse(_textBoxCapHeight.Text),
-                                },
-                            };
+                Casket casket = new Casket(_listTextBox);
+                //Casket casket = new Casket
+                //{
+                //    Box = new Box
+                //    {
+                //        Width = int.Parse(_textBoxWidth.Text),
+                //        Length = int.Parse(_textBoxLength.Text),
+                //        Height = int.Parse(_textBoxHeight.Text),
+                //        InnerWidth = int.Parse(_textBoxInsideWidth.Text),
+                //        InnerLength = int.Parse(_textBoxInsideLength.Text),
+                //        InnerHeight = int.Parse(_textBoxInsideHeight.Text)
+                //    },
+                //    Cap = new Cap
+                //    {
+                //        Width = int.Parse(_textBoxCapWidth.Text),
+                //        Length = int.Parse(_textBoxCapLength.Text),
+                //        Height = int.Parse(_textBoxCapHeight.Text),
+                //    },
+                //};
                 return casket;
             }
             catch
