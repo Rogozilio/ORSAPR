@@ -97,19 +97,21 @@ namespace View
                 throw new Exception("Заполните все поля");
             }
         }
-
+        /// <summary>
+        /// Задает значение полей по умолчанию
+        /// </summary>
         private void ButtonValueDefault_Click(object sender, EventArgs e)
         {
-            ValueCasketDefault valueDefault = new ValueCasketDefault();
-            _textBoxWidth.Text = valueDefault.casket.Box.Width.ToString();
-            _textBoxLength.Text = valueDefault.casket.Box.Length.ToString();
-            _textBoxHeight.Text = valueDefault.casket.Box.Height.ToString();
-            _textBoxInsideWidth.Text = valueDefault.casket.Box.InnerWidth.ToString();
-            _textBoxInsideLength.Text = valueDefault.casket.Box.InnerLength.ToString();
-            _textBoxInsideHeight.Text = valueDefault.casket.Box.InnerHeight.ToString();
-            _textBoxCapWidth.Text = valueDefault.casket.Cap.Width.ToString();
-            _textBoxCapLength.Text = valueDefault.casket.Cap.Length.ToString();
-            _textBoxCapHeight.Text = valueDefault.casket.Cap.Height.ToString();
+            Casket valueDefault = new Casket();
+            _textBoxWidth.Text = valueDefault.Box.Width.ToString();
+            _textBoxLength.Text = valueDefault.Box.Length.ToString();
+            _textBoxHeight.Text = valueDefault.Box.Height.ToString();
+            _textBoxInsideWidth.Text = valueDefault.Box.InnerWidth.ToString();
+            _textBoxInsideLength.Text = valueDefault.Box.InnerLength.ToString();
+            _textBoxInsideHeight.Text = valueDefault.Box.InnerHeight.ToString();
+            _textBoxCapWidth.Text = valueDefault.Cap.Width.ToString();
+            _textBoxCapLength.Text = valueDefault.Cap.Length.ToString();
+            _textBoxCapHeight.Text = valueDefault.Cap.Height.ToString();
         }
     }
 }
