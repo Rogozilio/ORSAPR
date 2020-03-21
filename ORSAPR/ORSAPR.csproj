@@ -78,6 +78,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="docs\orsapr_tz_rogozin.docx" />
     <None Include="docs\proekt_sistemy_rogozin.docx" />
     <None Include="View\packages.config" />
     <None Include="Properties\Settings.settings">
