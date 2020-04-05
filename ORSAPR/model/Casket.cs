@@ -27,7 +27,7 @@ namespace ORSAPR.model
             Cap.Width = 210;
             Cap.Length = 210;
             Cap.Height = 15;
-            CheckWritedValues(this);
+            CheckWritedValues();
         }
         public Casket(List<TextBox> textBox)
         {
@@ -71,35 +71,35 @@ namespace ORSAPR.model
             {
                 throw new Exception("Заполните все поля");
             }
-            CheckWritedValues(this);
+            CheckWritedValues();
         }
         /// <summary>
         /// Проверка полей на корректность ввода
         /// </summary>
         /// <param name="casket">Объект шкатулки</param>
-        private void CheckWritedValues(Casket casket)
+        private void CheckWritedValues()
         {
-            GetDependValues(casket);
-            CheckRangeValue(casket.Box.Width, casket.Range.Width.Min,
-                casket.Range.Width.Max, "Ширина основания");
-            CheckRangeValue(casket.Box.Length, casket.Range.Length.Min,
-                casket.Range.Length.Max, "Длина основания");
-            CheckRangeValue(casket.Box.Height, casket.Range.Height.Min,
-                casket.Range.Height.Max, "Высота основания");
+            GetDependValues();
+            CheckRangeValue(Box.Width, Range.Width.Min,
+                Range.Width.Max, "Ширина основания");
+            CheckRangeValue(Box.Length, Range.Length.Min,
+                Range.Length.Max, "Длина основания");
+            CheckRangeValue(Box.Height, Range.Height.Min,
+                Range.Height.Max, "Высота основания");
 
-            CheckRangeValue(casket.Box.InnerWidth, casket.Range.InnerWidth.Min,
-                casket.Range.InnerWidth.Max, "Ширина внутренней части");
-            CheckRangeValue(casket.Box.InnerLength, casket.Range.InnerLength.Min,
-                casket.Range.InnerLength.Max, "Длина внутренней части");
-            CheckRangeValue(casket.Box.InnerHeight, casket.Range.InnerHeight.Min,
-                casket.Range.InnerHeight.Max, "Высота внутренней части");
+            CheckRangeValue(Box.InnerWidth, Range.InnerWidth.Min,
+                Range.InnerWidth.Max, "Ширина внутренней части");
+            CheckRangeValue(Box.InnerLength, Range.InnerLength.Min,
+                Range.InnerLength.Max, "Длина внутренней части");
+            CheckRangeValue(Box.InnerHeight, Range.InnerHeight.Min,
+                Range.InnerHeight.Max, "Высота внутренней части");
 
-            CheckRangeValue(casket.Cap.Width, casket.Range.CapWidth.Min,
-                casket.Range.CapWidth.Max, "Ширина крышки");
-            CheckRangeValue(casket.Cap.Length, casket.Range.CapLength.Min,
-                casket.Range.CapLength.Max, "Длина крышки");
-            CheckRangeValue(casket.Cap.Height, casket.Range.CapHeight.Min,
-                casket.Range.CapHeight.Max, "Высота крышки");
+            CheckRangeValue(Cap.Width, Range.CapWidth.Min,
+                Range.CapWidth.Max, "Ширина крышки");
+            CheckRangeValue(Cap.Length, Range.CapLength.Min,
+                Range.CapLength.Max, "Длина крышки");
+            CheckRangeValue(Cap.Height, Range.CapHeight.Min,
+                Range.CapHeight.Max, "Высота крышки");
         }
         /// <summary>
         /// Проверка value в диапазоне (min-max)
@@ -117,13 +117,13 @@ namespace ORSAPR.model
         /// Получение зависимых значений
         /// </summary>
         /// <param name="casket">Объект шкатулки</param>
-        private void GetDependValues(Casket casket)
+        private void GetDependValues()
         {
-            casket.Range.InnerWidth.Max = casket.Box.Width - 5;
-            casket.Range.InnerLength.Max = casket.Box.Length - 5;
-            casket.Range.InnerHeight.Max = casket.Box.Height - 5;
-            casket.Range.CapWidth.Min = casket.Box.InnerWidth + 1;
-            casket.Range.CapLength.Min = casket.Box.InnerLength + 1;
+            Range.InnerWidth.Max = Box.Width - 5;
+            Range.InnerLength.Max = Box.Length - 5;
+            Range.InnerHeight.Max = Box.Height - 5;
+            Range.CapWidth.Min = Box.InnerWidth + 1;
+            Range.CapLength.Min = Box.InnerLength + 1;
         }
     }
 }
