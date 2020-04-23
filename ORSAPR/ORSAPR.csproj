@@ -50,20 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="model\Range.cs" />
     <Compile Include="View\Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="model\Box.cs" />
-    <Compile Include="model\Cap.cs" />
     <Compile Include="model\Casket.cs" />
     <Compile Include="model\Builder.cs" />
     <Compile Include="model\Exceptions\ValueOutOfRangeException.cs" />
     <Compile Include="model\NumberExtensions.cs" />
-    <Compile Include="model\SizeRange.cs" />
+    <Compile Include="model\RangedValue.cs" />
     <Compile Include="View\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\Main.resx">

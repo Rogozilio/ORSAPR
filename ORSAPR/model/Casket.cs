@@ -10,96 +10,71 @@ namespace ORSAPR.model
     /// </summary>
     class Casket
     {
-        public Box Box { get; } = new Box();
+        public RangedValue BoxWidth { get; set; } = new RangedValue { Min = 100, Max = 200 };
 
-        public Cap Cap { get; } = new Cap();
+        public RangedValue BoxLength { get; set; } = new RangedValue { Min = 100, Max = 200 };
 
-        public Range Range = new Range();
+        public RangedValue BoxHeight { get; set; } = new RangedValue { Min = 50, Max = 150 };
 
-        public Casket()
+        public RangedValue BoxInnerWidth { get; set; } = new RangedValue { Min = 50 };
+
+        public RangedValue BoxInnerLength { get; set; } = new RangedValue { Min = 50 };
+
+        public RangedValue BoxInnerHeight { get; set; } = new RangedValue { Min = 30 };
+
+        public RangedValue CapWidth { get; set; } = new RangedValue { Max = 230 };
+
+        public RangedValue CapLength { get; set; } = new RangedValue { Max = 230 };
+
+        public RangedValue CapHeight { get; set; } = new RangedValue { Min = 10, Max = 30 };
+        /// <summary>
+        /// Высота закрывающего механизма крышки
+        /// </summary>
+        public int ClosingHeight { get => 10; }
+
+        public Casket(bool isDefault = false)
         {
-            Box.Width = 200;
-            Box.Length = 200;
-            Box.Height = 150;
-            Box.InnerWidth = 190;
-            Box.InnerLength = 190;
-            Box.InnerHeight = 140;
-            Cap.Width = 210;
-            Cap.Length = 210;
-            Cap.Height = 15;
-            CheckWritedValues();
-        }
-        public Casket(List<TextBox> textBox)
-        {
-            try
+            if(isDefault)
             {
-                foreach(var value in textBox)
-                {
-                    switch (value.TabIndex)
-                    {
-                        case 1:
-                            Box.Width = int.Parse(value.Text);
-                            break;
-                        case 2:
-                            Box.Length = int.Parse(value.Text);
-                            break;
-                        case 3:
-                            Box.Height = int.Parse(value.Text);
-                            break;
-                        case 4:
-                            Box.InnerWidth = int.Parse(value.Text);
-                            break;
-                        case 5:
-                            Box.InnerLength = int.Parse(value.Text);
-                            break;
-                        case 6:
-                            Box.InnerHeight = int.Parse(value.Text);
-                            break;
-                        case 7:
-                            Cap.Width = int.Parse(value.Text);
-                            break;
-                        case 8:
-                            Cap.Length = int.Parse(value.Text);
-                            break;
-                        case 9:
-                            Cap.Height = int.Parse(value.Text);
-                            break;
-                    }
-                }
+                BoxWidth.Value = 200;
+                BoxLength.Value = 200;
+                BoxHeight.Value = 150;
+                BoxInnerWidth.Value = 190;
+                BoxInnerLength.Value = 190;
+                BoxInnerHeight.Value = 140;
+                CapWidth.Value = 210;
+                CapLength.Value = 210;
+                CapHeight.Value = 15;
+                CheckWritedValues();
             }
-            catch
-            {
-                throw new Exception("Заполните все поля");
-            }
-            CheckWritedValues();
         }
         /// <summary>
         /// Проверка полей на корректность ввода
         /// </summary>
         /// <param name="casket">Объект шкатулки</param>
-        private void CheckWritedValues()
+        public void CheckWritedValues()
         {
             GetDependValues();
-            CheckRangeValue(Box.Width, Range.Width.Min,
-                Range.Width.Max, "Ширина основания");
-            CheckRangeValue(Box.Length, Range.Length.Min,
-                Range.Length.Max, "Длина основания");
-            CheckRangeValue(Box.Height, Range.Height.Min,
-                Range.Height.Max, "Высота основания");
+            CheckRangeValue(BoxWidth.Value, BoxWidth.Min,
+                BoxWidth.Max, "Ширина основания");
+            CheckRangeValue(BoxLength.Value, BoxLength.Min,
+                BoxLength.Max, "Длина основания");
+            CheckRangeValue(BoxHeight.Value, BoxHeight.Min,
+                BoxHeight.Max, "Высота основания");
 
-            CheckRangeValue(Box.InnerWidth, Range.InnerWidth.Min,
-                Range.InnerWidth.Max, "Ширина внутренней части");
-            CheckRangeValue(Box.InnerLength, Range.InnerLength.Min,
-                Range.InnerLength.Max, "Длина внутренней части");
-            CheckRangeValue(Box.InnerHeight, Range.InnerHeight.Min,
-                Range.InnerHeight.Max, "Высота внутренней части");
+            CheckRangeValue(BoxInnerWidth.Value, BoxInnerWidth.Min,
+                BoxInnerWidth.Max, "Ширина внутренней части");
+            CheckRangeValue(BoxInnerLength.Value, BoxInnerLength.Min,
+                BoxInnerLength.Max, "Длина внутренней части");
+            CheckRangeValue(BoxInnerHeight.Value, BoxInnerHeight.Min,
+                BoxInnerHeight.Max, "Высота внутренней части");
 
-            CheckRangeValue(Cap.Width, Range.CapWidth.Min,
-                Range.CapWidth.Max, "Ширина крышки");
-            CheckRangeValue(Cap.Length, Range.CapLength.Min,
-                Range.CapLength.Max, "Длина крышки");
-            CheckRangeValue(Cap.Height, Range.CapHeight.Min,
-                Range.CapHeight.Max, "Высота крышки");
+            CheckRangeValue(CapWidth.Value, CapWidth.Min,
+                CapWidth.Max, "Ширина крышки");
+            CheckRangeValue(CapLength.Value, CapLength.Min,
+                CapLength.Max, "Длина крышки");
+            CheckRangeValue(CapHeight.Value,CapHeight.Min,
+                CapHeight.Max, "Высота крышки");
         }
         /// <summary>
         /// Проверка value в диапазоне (min-max)
@@ -119,11 +94,11 @@ namespace ORSAPR.model
         /// <param name="casket">Объект шкатулки</param>
         private void GetDependValues()
         {
-            Range.InnerWidth.Max = Box.Width - 5;
-            Range.InnerLength.Max = Box.Length - 5;
-            Range.InnerHeight.Max = Box.Height - 5;
-            Range.CapWidth.Min = Box.InnerWidth + 1;
-            Range.CapLength.Min = Box.InnerLength + 1;
+            BoxInnerWidth.Max = BoxWidth.Value - 5;
+            BoxInnerLength.Max = BoxLength.Value - 5;
+            BoxInnerHeight.Max = BoxHeight.Value - 5;
+            CapWidth.Min = BoxInnerWidth.Value + 1;
+            CapLength.Min = BoxInnerLength.Value + 1;
         }
     }
 }

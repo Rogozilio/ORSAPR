@@ -84,6 +84,7 @@
             this._textBoxWidth.ShortcutsEnabled = false;
             this._textBoxWidth.Size = new System.Drawing.Size(100, 20);
             this._textBoxWidth.TabIndex = 1;
+            this._textBoxWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressOnlyDigit);
             // 
             // _textBoxLength
             // 
@@ -93,6 +94,7 @@
             this._textBoxLength.ShortcutsEnabled = false;
             this._textBoxLength.Size = new System.Drawing.Size(100, 20);
             this._textBoxLength.TabIndex = 2;
+            this._textBoxLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressOnlyDigit);
             // 
             // _textBoxHeight
             // 
@@ -102,6 +104,7 @@
             this._textBoxHeight.ShortcutsEnabled = false;
             this._textBoxHeight.Size = new System.Drawing.Size(100, 20);
             this._textBoxHeight.TabIndex = 3;
+            this._textBoxHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressOnlyDigit);
             // 
             // _textBoxInsideWidth
             // 
@@ -111,6 +114,7 @@
             this._textBoxInsideWidth.ShortcutsEnabled = false;
             this._textBoxInsideWidth.Size = new System.Drawing.Size(100, 20);
             this._textBoxInsideWidth.TabIndex = 4;
+            this._textBoxInsideWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressOnlyDigit);
             // 
             // _textBoxInsideLength
             // 
@@ -120,6 +124,7 @@
             this._textBoxInsideLength.ShortcutsEnabled = false;
             this._textBoxInsideLength.Size = new System.Drawing.Size(100, 20);
             this._textBoxInsideLength.TabIndex = 5;
+            this._textBoxInsideLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressOnlyDigit);
             // 
             // _textBoxInsideHeight
             // 
@@ -129,6 +134,7 @@
             this._textBoxInsideHeight.ShortcutsEnabled = false;
             this._textBoxInsideHeight.Size = new System.Drawing.Size(100, 20);
             this._textBoxInsideHeight.TabIndex = 6;
+            this._textBoxInsideHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressOnlyDigit);
             // 
             // _textBoxCapWidth
             // 
@@ -138,6 +144,7 @@
             this._textBoxCapWidth.ShortcutsEnabled = false;
             this._textBoxCapWidth.Size = new System.Drawing.Size(100, 20);
             this._textBoxCapWidth.TabIndex = 7;
+            this._textBoxCapWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressOnlyDigit);
             // 
             // _textBoxCapLength
             // 
@@ -147,6 +154,7 @@
             this._textBoxCapLength.ShortcutsEnabled = false;
             this._textBoxCapLength.Size = new System.Drawing.Size(100, 20);
             this._textBoxCapLength.TabIndex = 8;
+            this._textBoxCapLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressOnlyDigit);
             // 
             // _textBoxCapHeight
             // 
@@ -156,6 +164,7 @@
             this._textBoxCapHeight.ShortcutsEnabled = false;
             this._textBoxCapHeight.Size = new System.Drawing.Size(100, 20);
             this._textBoxCapHeight.TabIndex = 9;
+            this._textBoxCapHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressOnlyDigit);
             // 
             // _groupBoxBase
             // 

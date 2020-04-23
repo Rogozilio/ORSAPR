@@ -68,24 +68,24 @@ namespace ORSAPR.model
         /// <param name="casket">объект шкатулки</param>
         private void BuildCasket(Casket casket)
         {
-            BuildBox(casket.Box);
-            BuildCap(casket.Cap, casket.Box.InnerWidth, casket.Box.InnerLength);
+            BuildBox(casket);
+            BuildCap(casket);
             IsometricView();
         }
         /// <summary>
         /// Строит коробку шкатулки в SolidWorks 2020
         /// </summary>
         /// <param name="box">объект коробки</param>
-        private void BuildBox(Box box)
+        private void BuildBox(Casket casket)
         {
             SelectLayer();
             SelectSketch();
-            DrawRectangle(box.Width, box.Length);
-            ExtrudeFigure(box.Height);
-            SelectLayerByRay(box.Height);
+            DrawRectangle(casket.BoxWidth.Value, casket.BoxLength.Value);
+            ExtrudeFigure(casket.BoxHeight.Value);
+            SelectLayerByRay(casket.BoxHeight.Value);
             SelectSketch();
-            DrawRectangle(box.InnerWidth, box.InnerLength);
-            CutFigure(box.InnerHeight, false);
+            DrawRectangle(casket.BoxInnerWidth.Value, casket.BoxInnerLength.Value);
+            CutFigure(casket.BoxInnerHeight.Value, false);
             RemoveAllocating();
         }
         /// <summary>
@@ -94,18 +94,18 @@ namespace ORSAPR.model
         /// <param name="cap">объект крышки</param>
         /// <param name="boxInnerWidth"></param>
         /// <param name="boxInnerLength"></param>
-        private void BuildCap(Cap cap, int boxInnerWidth, int boxInnerLength)
+        private void BuildCap(Casket casket)
         {
             SelectLayer();
             SelectSketch();
-            DrawRectangle(cap.Width + MilliBetweenBoxAndCap * 2, cap.Length,
-                cap.Width + MilliBetweenBoxAndCap);
-            ExtrudeFigure(cap.Height);
+            DrawRectangle(casket.CapWidth.Value + MilliBetweenBoxAndCap * 2, casket.CapLength.Value,
+                casket.CapWidth.Value + MilliBetweenBoxAndCap);
+            ExtrudeFigure(casket.CapHeight.Value);
             SelectLayer();
             SelectSketch();
-            DrawRectangle((cap.Width+ MilliBetweenBoxAndCap)*2 - boxInnerWidth,
-                boxInnerLength, cap.Width + MilliBetweenBoxAndCap);
-            ExtrudeFigure(cap.Height + cap.ClosingHeight);
+            DrawRectangle((casket.CapWidth.Value + MilliBetweenBoxAndCap)*2 - casket.BoxInnerWidth.Value,
+                casket.BoxInnerLength.Value, casket.CapWidth.Value + MilliBetweenBoxAndCap);
+            ExtrudeFigure(casket.CapHeight.Value + casket.ClosingHeight);
             RemoveAllocating();
         }
         /// <summary>
