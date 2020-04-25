@@ -98,13 +98,13 @@ namespace ORSAPR.model
         {
             SelectLayer();
             SelectSketch();
-            DrawRectangle(casket.CapWidth.Value + MilliBetweenBoxAndCap * 2, casket.CapLength.Value,
-                casket.CapWidth.Value + MilliBetweenBoxAndCap);
+            DrawRectangle(casket.BoxWidth.Value + MilliBetweenBoxAndCap * 2, casket.CapLength.Value,
+                casket.BoxWidth.Value / 2 + MilliBetweenBoxAndCap + casket.CapWidth.Value / 2);
             ExtrudeFigure(casket.CapHeight.Value);
             SelectLayer();
             SelectSketch();
-            DrawRectangle((casket.CapWidth.Value + MilliBetweenBoxAndCap)*2 - casket.BoxInnerWidth.Value,
-                casket.BoxInnerLength.Value, casket.CapWidth.Value + MilliBetweenBoxAndCap);
+            DrawRectangle(casket.BoxWidth.Value + MilliBetweenBoxAndCap * 2 + (casket.CapWidth.Value - casket.BoxInnerWidth.Value),
+                casket.BoxInnerLength.Value, casket.BoxWidth.Value / 2 + MilliBetweenBoxAndCap + casket.CapWidth.Value / 2);
             ExtrudeFigure(casket.CapHeight.Value + casket.ClosingHeight);
             RemoveAllocating();
         }
