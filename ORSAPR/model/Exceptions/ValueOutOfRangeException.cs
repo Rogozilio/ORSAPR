@@ -11,7 +11,7 @@ namespace ORSAPR.model.Exceptions
         /// <param name="min">Минимальное значение поля</param>
         /// <param name="max">Максимальное значение поля</param>
         public ValueOutOfRangeException(string nameValue, int min, int max)
-            : base(nameValue+" находится вне диапазона допустимых значений "+min+" - "+max)
+            : base(nameValue + " находится вне диапазона допустимых значений " + min + " - " + max)
         {
         }
     }

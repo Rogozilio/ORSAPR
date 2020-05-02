@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using ORSAPR.model;
+using ORSAPR.model.Interfaces;
 
 namespace View
 {
@@ -12,13 +11,19 @@ namespace View
         {
             InitializeComponent();
         }
-
-        private Builder _draw = new Builder();
+        /// <summary>
+        /// API Команды к программе SOLIDWORKS
+        /// </summary>
+        private ISolidWorkCommander _commander = new SolidWorksCommander();
+        /// <summary>
+        /// Построитель шкатулки в SOLIDWORKS
+        /// </summary>
+        private Builder _build = new Builder();
         /// <summary>
         /// Заполнение параметров шкатулки
         /// </summary>
         /// <param name="casket">Объект шкатулки</param>
-        /// <returns></returns>
+        /// <returns>Объект шкатулки</returns>
         private Casket FillCasket(Casket casket)
         {
             try
@@ -60,7 +65,7 @@ namespace View
                 Casket casket = new Casket();
                 casket = FillCasket(casket);
                 casket.CheckWritedValues();
-                _draw.BuilModel(casket);
+                _build.BuilModel(casket,_commander);
             }
             catch (Exception ex)
             {

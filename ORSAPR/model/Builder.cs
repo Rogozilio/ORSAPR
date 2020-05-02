@@ -1,5 +1,5 @@
 ﻿using System;
-using SolidWorks.Interop.sldworks;
+using ORSAPR.model.Interfaces;
 
 namespace ORSAPR.model
 {
@@ -8,26 +8,24 @@ namespace ORSAPR.model
     /// </summary>
     class Builder
     {
-        private SldWorks solidWork;
-
-        private IModelDoc2 model;
-
-        private const string TopAxisName = "Сверху";
-
-        private const string NameView = "Изометрия";
-
-        private const string SelectionAxisType = "PLANE";
-
+        /// <summary>
+        /// API SolidWorka
+        /// </summary>
+        private ISolidWorkCommander _commander = new SolidWorksCommander();
+        /// <summary>
+        /// Расстояние между коробкой и крышкой
+        /// </summary>
         private const int MilliBetweenBoxAndCap = 5;
         /// <summary>
         /// Строит модель в SolidWorks 2020
         /// </summary>
         /// <param name="casket">объект шкатулки</param>
-        public void BuilModel(Casket casket)
+        public void BuilModel(Casket casket, ISolidWorkCommander commander)
         {
             object SW = ExistSolidWork();
-            LaunchSolidWork(SW);
-            CreateSWFile();
+            _commander = commander;
+            _commander.LaunchSolidWork(SW);
+            _commander.CreateSWFile();
             BuildCasket(casket);
         }
         /// <summary>
@@ -46,22 +44,7 @@ namespace ORSAPR.model
                 throw new Exception("GUID SolidWorks 2020 не найден");
             }
         }
-        /// <summary>
-        /// Запускает SolidWorks 2020
-        /// </summary>
-        private void LaunchSolidWork(object processSW)
-        {
-            solidWork = (SldWorks)processSW;
-            solidWork.Visible = true;
-        }
-        /// <summary>
-        /// Создает файл в SolidWorks 2020
-        /// </summary>
-        private void CreateSWFile()
-        {
-            solidWork.NewPart();
-            model = solidWork.IActiveDoc2;
-        }
+       
         /// <summary>
         /// Строит шкатулку в SolidWorks 2020
         /// </summary>
@@ -70,7 +53,7 @@ namespace ORSAPR.model
         {
             BuildBox(casket);
             BuildCap(casket);
-            IsometricView();
+            _commander.IsometricView();
         }
         /// <summary>
         /// Строит коробку шкатулки в SolidWorks 2020
@@ -78,100 +61,43 @@ namespace ORSAPR.model
         /// <param name="box">объект коробки</param>
         private void BuildBox(Casket casket)
         {
-            SelectLayer();
-            SelectSketch();
-            DrawRectangle(casket.BoxWidth.Value, casket.BoxLength.Value);
-            ExtrudeFigure(casket.BoxHeight.Value);
-            SelectLayerByRay(casket.BoxHeight.Value);
-            SelectSketch();
-            DrawRectangle(casket.BoxInnerWidth.Value, casket.BoxInnerLength.Value);
-            CutFigure(casket.BoxInnerHeight.Value, false);
-            RemoveAllocating();
+            _commander.SelectLayer();
+            _commander.SelectSketch();
+            _commander.DrawRectangle(casket.BoxWidth.Value, casket.BoxLength.Value);
+            _commander.ExtrudeFigure(casket.BoxHeight.Value);
+            _commander.SelectLayerByRay(casket.BoxHeight.Value);
+            _commander.SelectSketch();
+            _commander.DrawRectangle(casket.BoxInnerWidth.Value, casket.BoxInnerLength.Value);
+            _commander.CutFigure(casket.BoxInnerHeight.Value, false);
+            _commander.RemoveAllocating();
         }
         /// <summary>
         /// Строит крышку шкатулки в SolidWorks 2020
         /// </summary>
         /// <param name="cap">объект крышки</param>
-        /// <param name="boxInnerWidth"></param>
-        /// <param name="boxInnerLength"></param>
         private void BuildCap(Casket casket)
         {
-            SelectLayer();
-            SelectSketch();
-            DrawRectangle(casket.BoxWidth.Value + MilliBetweenBoxAndCap * 2, casket.CapLength.Value,
-                casket.BoxWidth.Value / 2 + MilliBetweenBoxAndCap + casket.CapWidth.Value / 2);
-            ExtrudeFigure(casket.CapHeight.Value);
-            SelectLayer();
-            SelectSketch();
-            DrawRectangle(casket.BoxWidth.Value + MilliBetweenBoxAndCap * 2 + (casket.CapWidth.Value - casket.BoxInnerWidth.Value),
-                casket.BoxInnerLength.Value, casket.BoxWidth.Value / 2 + MilliBetweenBoxAndCap + casket.CapWidth.Value / 2);
-            ExtrudeFigure(casket.CapHeight.Value + casket.ClosingHeight);
-            RemoveAllocating();
-        }
-        /// <summary>
-        /// Выбор плоскости
-        /// </summary>
-        private void SelectLayer()
-        {
-            model.Extension.SelectByID2(TopAxisName, SelectionAxisType, 0, 0, 0, false, 0, null, 0);
-        }
-        /// <summary>
-        /// Выбирает плоскость, которая пересекает луч
-        /// </summary>
-        /// <param name="height">Высота луча</param>
-        private void SelectLayerByRay(double height)
-        {
-            model.Extension.SelectByRay(0, height.ToMilli(), 0,
-                1, height.ToMilli(), 1, 1, 2, false, 0, 0);
-        }
-        /// <summary>
-        /// Перейти, выйти из режима эскиза
-        /// </summary>
-        private void SelectSketch()
-        {
-            model.SketchManager.InsertSketch(true);
-        }
-        /// <summary>
-        /// Убрать все выделения
-        /// </summary>
-        private void RemoveAllocating()
-        {
-            model.ClearSelection2(true);
-        }
-        /// <summary>
-        /// Рисует прямоугольник от центра кординат
-        /// </summary>
-        private void DrawRectangle(double x, double y, double centerX = 0)
-        {
-            model.SketchManager.CreateCenterRectangle(centerX.ToMilli(), 0, 0, 
-                x.ToMilli()/2, y.ToMilli()/2, 0);
-        }
-        /// <summary>
-        /// Вытягивание эскиза
-        /// </summary>
-        /// <param name="height">Высота вытягивания</param>
-        private void ExtrudeFigure(double height)
-        {
-            model.FeatureManager.FeatureExtrusion2(true, false, false, 0, 0, height.ToMilli(), 0.01, false, false, false, false, 
-                1.74532925199433E-02, 1.74532925199433E-02, false, false, false, false, true, true, true, 0, 0, false);
-        }
-        /// <summary>
-        /// Вырезание по эскизу
-        /// </summary>
-        /// <param name="height">Высота выреза</param>
-        /// <param name="isUp">Направление выреза</param>
-        private void CutFigure(double height, bool isUp = true)
-        {
-            model.FeatureManager.FeatureCut4(true, false, isUp, 0, 0, height.ToMilli(), 0.01, false, false, false, false, 
-                1.74532925199433E-02, 1.74532925199433E-02, false, false, false, false, false, true, true, true, true, false, 0, 0, false, false);
-        }
-        /// <summary>
-        /// Переключение камеры на вид изометрии
-        /// </summary>
-        private void IsometricView()
-        {
-            model.ShowNamedView2(NameView, -1);
-            model.ViewZoomtofit2();
+            double XBaseCap = casket.BoxWidth.Value + 
+                MilliBetweenBoxAndCap * 2;
+            double XInnertCap = casket.BoxWidth.Value + 
+                MilliBetweenBoxAndCap * 2 +
+                (casket.CapWidth.Value - casket.BoxInnerWidth.Value);
+            double CenterXForCap = casket.BoxWidth.Value / 2 + 
+                MilliBetweenBoxAndCap + 
+                casket.CapWidth.Value / 2;   
+            _commander.SelectLayer();
+            _commander.SelectSketch();
+            _commander.DrawRectangle(XBaseCap,
+                casket.CapLength.Value,
+                CenterXForCap);
+            _commander.ExtrudeFigure(casket.CapHeight.Value);
+            _commander.SelectLayer();
+            _commander.SelectSketch();
+            _commander.DrawRectangle(XInnertCap,
+                casket.BoxInnerLength.Value,
+                CenterXForCap);
+            _commander.ExtrudeFigure(casket.CapHeight.Value + casket.ClosingHeight);
+            _commander.RemoveAllocating();
         }
     }
 }
