@@ -103,6 +103,7 @@
     </Compile>
     <None Include="docs\orsapr_tz_rogozin.docx" />
     <None Include="docs\proekt_sistemy_rogozin.docx" />
+    <None Include="docs\Пояснительная записка.docx" />
     <None Include="packages.config" />
     <None Include="View\packages.config" />
     <None Include="Properties\Settings.settings">

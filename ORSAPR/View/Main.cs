@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using ORSAPR.model;
+using System.IO;
 using ORSAPR.model.Interfaces;
 
 namespace View
@@ -44,7 +46,6 @@ namespace View
                 throw new Exception("Заполните все поля");
             }
         }
-
         /// <summary>
         /// Событие для ввода только цифр
         /// </summary>
@@ -65,7 +66,7 @@ namespace View
                 Casket casket = new Casket();
                 casket = FillCasket(casket);
                 casket.CheckWritedValues();
-                _build.BuilModel(casket,_commander);
+                _build.BuilModel(casket, _commander);
             }
             catch (Exception ex)
             {
