@@ -3,7 +3,7 @@
     /// <summary>
     /// Описание диапазона
     /// </summary>
-    class RangedValue
+    public class RangedValue
     {
         public int Min { get; set; }
 

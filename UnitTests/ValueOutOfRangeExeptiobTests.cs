@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using ORSAPR.model.Exceptions;
 
-namespace ORSAPR.model.Tests
+namespace UnitTests
 {
     /// <summary>
     /// Модульные тесты для класса ValueOutOfRangeExeption

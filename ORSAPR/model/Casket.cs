@@ -8,7 +8,7 @@ namespace ORSAPR.model
     /// <summary>
     /// Класс описывает шкатулки
     /// </summary>
-    class Casket
+    public class Casket
     {
         public RangedValue BoxWidth { get; set; } = new RangedValue { Min = 100, Max = 200 };
 

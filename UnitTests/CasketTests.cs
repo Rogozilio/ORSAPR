@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using NUnit.Framework;
 using ORSAPR.model.Exceptions;
+using ORSAPR.model;
 
-namespace ORSAPR.model.Tests
+namespace UnitTests
 {
     /// <summary>
     /// Модульные тесты для класса Casket
@@ -92,7 +93,7 @@ namespace ORSAPR.model.Tests
         [TestCaseSource(typeof(CasketTestsData), nameof(CasketTestsData.CasketNegative))]
         public void CasketValueTest_RangeExeption(Casket casket)
         {
-            Assert.Throws<ValueOutOfRangeException>(()=> casket.CheckWritedValues());
+            Assert.Throws<ValueOutOfRangeException>(() => casket.CheckWritedValues());
         }
         /// <summary>
         /// Тестовые данные для CasketTests

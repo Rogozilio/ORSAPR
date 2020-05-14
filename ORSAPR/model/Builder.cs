@@ -6,7 +6,7 @@ namespace ORSAPR.model
     /// <summary>
     /// Класс для построения модели в SolidWorks 2020
     /// </summary>
-    class Builder
+    public class Builder
     {
         /// <summary>
         /// API SolidWorka

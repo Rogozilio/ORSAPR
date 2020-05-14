@@ -1,8 +1,9 @@
 ﻿using NUnit.Framework;
 using ORSAPR.model.Interfaces;
+using ORSAPR.model;
 using NSubstitute;
 
-namespace ORSAPR.model.Tests
+namespace UnitTests
 {
     /// <summary>
     /// Модульные тесты для класса Builder
@@ -29,7 +30,7 @@ namespace ORSAPR.model.Tests
         {
             _builder = new Builder();
             _casket = new Casket(true);
-            
+
         }
         /// <summary>
         /// Проверка на существования SolidWork 20202 на PC

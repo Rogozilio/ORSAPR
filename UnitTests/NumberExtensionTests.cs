@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
+using ORSAPR.model;
 
-namespace ORSAPR.model.Tests
+namespace UnitTests
 {
     /// <summary>
     /// Модульные тесты для класса  NumberExtension
@@ -18,7 +19,7 @@ namespace ORSAPR.model.Tests
         [TestCase(400000)]
         public void NumberExtensionValue_ReturnValueInteger(int value)
         {
-            Assert.AreEqual(NumberExtensions.ToMilli(value), value/1000);
+            Assert.AreEqual(NumberExtensions.ToMilli(value), value / 1000);
         }
         /// <summary>
         /// Перевод метров в миллиметры для не целых чисел
