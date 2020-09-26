@@ -4,3 +4,8 @@
 
 ---
 ![Image alt](https://github.com/Rogozilio/ORSAPR/blob/develop/box.png)
+
+Пример построение шкаутлки с данными по умолчанию:
+
+---
+![Image alt](https://github.com/Rogozilio/ORSAPR/blob/develop/casket.png)
